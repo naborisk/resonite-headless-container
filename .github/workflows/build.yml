@@ -17,15 +17,15 @@ jobs:
       packages: write
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: write .env file
         run: |
           touch .env
           echo STEAM_USER=${{ secrets.STEAM_USER }} >> .env
           echo STEAM_PASS=${{ secrets.STEAM_PASS }} >> .env
           echo BETA_PASSWORD=${{ secrets.BETA_PASSWORD }} >> .env
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1

@@ -1,5 +1,5 @@
 # Resonite Headless Server Image
-## Build
+## Building
 Copy `.env.example` to `.env`, set appropriate values, then run:
 
 ```sh

@@ -11,6 +11,14 @@ RUN	set -x && \
 	apt-get -y upgrade && \
 	apt-get -y install curl lib32gcc-s1 libopus-dev libopus0 opus-tools libc-dev && \
 	rm -rf /var/lib/{apt,dpkg,cache}
+
+# install steam for steam api support
+RUN echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free" >> /etc/apt/sources.list
+RUN dpkg --add-architecture i386
+RUN apt-get update && \
+  apt-get install -y steam-installer mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+
 COPY --from=builder /Resonite/Headless /Headless
 WORKDIR /Headless
+STOPSIGNAL SIGINT
 ENTRYPOINT [ "dotnet", "Resonite.dll" ]

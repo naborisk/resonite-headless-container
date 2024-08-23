@@ -15,6 +15,7 @@ RUN	set -x && \
 # Copy the files from the builder
 COPY --from=builder /Resonite/Headless /Headless
 COPY --from=builder /root/.steam /root/.steam
+COPY --from=builder /root/.local/share/Steam /root/.local/share/Steam
 
 WORKDIR /Headless
 STOPSIGNAL SIGINT

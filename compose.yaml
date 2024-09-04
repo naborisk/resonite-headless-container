@@ -1,6 +1,6 @@
 services:
   headless:
-    image: ghcr.io/naborisk/resonite-headless-container:main
+    image: ghcr.io/naborisk/resonite-headless-container:latest
     entrypoint: dotnet Resonite.dll -LoadAssembly ./Libraries/ResoniteModLoader.dll
     volumes:
       - ./rml_mods:/Headless/rml_mods

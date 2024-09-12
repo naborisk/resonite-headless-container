@@ -20,4 +20,4 @@ jobs:
       - run: echo $LAST_UPDATED
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LAST_UPDATED: ${{ env.LAST_UPDATED }}
+          LAST_UPDATED: ${{vars.LAST_UPDATED }}

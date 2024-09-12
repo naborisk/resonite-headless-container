@@ -7,7 +7,6 @@ on:
 
 jobs:
   check_for_updates:
-    permissions: write-all
     if: github.repository_owner == 'naborisk'
     runs-on: self-hosted
     steps:
@@ -18,3 +17,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LAST_UPDATED: ${{vars.LAST_UPDATED }}
+          PAT: ${{ secrets.PAT }}

@@ -18,7 +18,7 @@ if [ "$CHECK_TIME_UPDATED" != "$LAST_UPDATED" ]; then
   curl -L \
     -X PATCH \
     -H "Accept: application/vnd.github+json" \
-    -H "Authorization: Bearer $GH_TOKEN" \
+    -H "Authorization: Bearer $PAT" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
     https://api.github.com/repos/naborisk/resonite-headless-container/actions/variables/LAST_UPDATED \
     -d '{"name":"LAST_UPDATED","value":"'"$CHECK_TIME_UPDATED"'"}'

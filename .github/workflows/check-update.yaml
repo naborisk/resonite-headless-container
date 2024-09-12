@@ -12,6 +12,7 @@ env:
 jobs:
   check_for_updates:
     if: github.repository_owner == 'naborisk'
+    runs-on: self-hosted
     steps:
       - run: ./updater/update.sh
         env:

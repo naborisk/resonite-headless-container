@@ -1,4 +1,4 @@
-name: Build and publish image
+name: Check for updates and rebuild image
 
 on:
   workflow_dispatch:

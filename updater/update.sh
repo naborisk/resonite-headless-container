@@ -12,7 +12,7 @@ if [ "$CHECK_TIME_UPDATED" != "$LAST_UPDATED" ]; then
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer $GH_TOKEN" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
-    "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/build.yaml/dispatches" \
+    "https://api.github.com/repos/naborisk/resonite-headless-container/actions/workflows/build.yaml/dispatches" \
     -d '{"ref":"main"}'
 
   # gh workflow run build.yaml --ref main

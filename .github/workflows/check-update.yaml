@@ -5,12 +5,9 @@ on:
   schedule:
     - cron: '*/5 * * * *'
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   check_for_updates:
+    permissions: write-all
     if: github.repository_owner == 'naborisk'
     runs-on: self-hosted
     steps:

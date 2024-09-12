@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - run: echo $LAST_UPDATED
+      - run: ./updater/update.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LAST_UPDATED: ${{vars.LAST_UPDATED }}

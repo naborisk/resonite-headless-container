@@ -4,7 +4,7 @@ CHECK_TIME_UPDATED=$(curl https://api.steamcmd.net/v1/info/2519830 | jq -r '.dat
 echo CHECK_TIME_UPDATED: $CHECK_TIME_UPDATED
 echo LAST_UPDATED: $LAST_UPDATED
 
-if [ "$CHECK_TIME_UPDATED" != "$LAST_UPDATED" ]; then
+if [ "$CHECK_TIME_UPDATED" != "$LAST_UPDATED" && "$CHECK_TIME_UPDATED" != null ]; then
   echo "New update found, updating..., last updated: $LAST_UPDATED -> $CHECK_TIME_UPDATED"
 
   curl -L \

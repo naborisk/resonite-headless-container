@@ -56,4 +56,4 @@ jobs:
 
       - name: Show build version
         run: |
-          docker run --entrypoint /bin/bash --rm -it . -c "cat Build.version"
+          docker run --entrypoint /bin/bash --rm . -c "cat Build.version"

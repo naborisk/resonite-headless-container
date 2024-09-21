@@ -54,6 +54,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Show build version
-        run: |
-          docker run --entrypoint /bin/bash --rm . -c "cat Build.version"
+      # - name: Show build version
+      #   run: |
+      #     docker run --entrypoint /bin/bash --rm . -c "cat Build.version"

@@ -3,7 +3,7 @@ name: Check for updates and rebuild image
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   check_for_updates:

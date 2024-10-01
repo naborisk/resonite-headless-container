@@ -54,6 +54,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      # - name: Show build version
-      #   run: |
-      #     docker run --entrypoint /bin/bash --rm . -c "cat Build.version"
+      - name: Show build version
+        run: |
+          RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm . -c "cat Build.version") >> $GITHUB_ENV
+
+      - name: Print version
+        run: echo ${{ env.RESONITE_VERSION }}

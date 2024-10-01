@@ -56,7 +56,7 @@ jobs:
 
       - name: Show build version
         run: |
-          RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm . -c "cat Build.version") >> $GITHUB_ENV
+          RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm resonite-headless-container -c "cat Build.version") >> $GITHUB_ENV
 
       - name: Print version
         run: echo ${{ env.RESONITE_VERSION }}

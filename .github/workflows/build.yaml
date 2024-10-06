@@ -54,9 +54,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      # - name: Show build version
-      #   run: |
-      #     RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm resonite-headless-container -c "cat Build.version") >> $GITHUB_ENV
+      - name: Show build version
+        run: |
+          RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -c "cat Build.version") >> $GITHUB_ENV
       #
       # - name: Print version
       #   run: echo ${{ env.RESONITE_VERSION }}

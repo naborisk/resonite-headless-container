@@ -57,6 +57,6 @@ jobs:
       - name: Show build version
         run: |
           RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -c "cat Build.version") >> $GITHUB_ENV
-      #
-      # - name: Print version
-      #   run: echo ${{ env.RESONITE_VERSION }}
+
+      - name: Print version
+        run: echo ${{ env.RESONITE_VERSION }}

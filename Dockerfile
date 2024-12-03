@@ -1,4 +1,4 @@
-FROM steamcmd/steamcmd:latest as builder
+FROM steamcmd/steamcmd:latest AS builder
 COPY .env ./.env
 COPY download-headless.sh ./download-headless.sh
 RUN chmod +x ./download-headless.sh

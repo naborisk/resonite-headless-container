@@ -1,4 +1,4 @@
-name: Build and publish image
+name: TEST Build and publish image (Test tagging)
 
 on:
   workflow_dispatch:
@@ -39,24 +39,26 @@ jobs:
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # set latest tag for default branch
             type=raw,value=latest,enable={{is_default_branch}}
+            type=sha
+            type=ref,event=branch
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
-          push: true
+          push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Show build version
+      - name: Extract build version
         run: |
-          docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -c "cat Build.version"
+          echo "RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -c \"cat Build.version\")" >> $GITHUB_ENV
 
-      # - name: Print version
-      #   run: echo ${{ env.RESONITE_VERSION }}
+      - name: Print version
+        run: echo ${{ env.RESONITE_VERSION }}

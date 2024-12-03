@@ -1,4 +1,4 @@
-name: TEST Build and publish image (Test tagging)
+name: Build and publish image (Test tagging)
 
 on:
   workflow_dispatch:
@@ -58,7 +58,8 @@ jobs:
 
       - name: Extract build version
         run: |
-          echo "RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -c \"cat Build.version\")" >> $GITHUB_ENV
+          export RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} -c "cat Build.version")
+          echo $RESONITE_VERSION >> $GITHUB_ENV
 
       - name: Print version
         run: echo ${{ env.RESONITE_VERSION }}

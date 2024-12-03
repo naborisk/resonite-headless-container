@@ -5,7 +5,7 @@ RUN chmod +x ./download-headless.sh
 RUN ./download-headless.sh
 RUN rm ./.env
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0
+FROM mcr.microsoft.com/dotnet/sdk:9.0
 RUN	set -x && \
 	apt-get -y update && \
 	apt-get -y upgrade && \

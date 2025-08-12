@@ -68,7 +68,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # set latest tag for default branch
-            type=raw,value=latest,enable={{ github.event.inputs.steam-beta == 'headless' }}
+            type=raw,value=latest,enable=${{ github.event.inputs.steam-beta == 'headless' }}
             type=raw,value=${{ env.RESONITE_VERSION }}
             type=raw,value=${{ github.event.inputs.steam-beta }}
             type=sha

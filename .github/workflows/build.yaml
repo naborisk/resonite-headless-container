@@ -47,16 +47,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image for test
+      - name: Build Docker image for build version extraction
         uses: docker/build-push-action@v6
         with:
           context: .
           load: true
-          # tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:temp
 
       - name: Extract build version
         run: |
-          echo RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:test -c "cat Build.version") >> $GITHUB_ENV
+          echo RESONITE_VERSION=$(docker run --entrypoint /bin/bash --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:temp -c "cat Build.version") >> $GITHUB_ENV
 
       - name: Print version
         run: echo ${{ env.RESONITE_VERSION }}

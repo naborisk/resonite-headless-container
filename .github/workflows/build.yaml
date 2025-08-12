@@ -6,10 +6,10 @@ on:
       steam-beta:
         description: 'Steam beta branch'
         required: true
-        default: 'beta'
+        default: 'headless'
         type: choice
         options:
-          - beta
+          - headless
           - prerelease
 
 env:

@@ -2,6 +2,15 @@ name: Build and publish image
 
 on:
   workflow_dispatch:
+    inputs:
+      steam-beta:
+        description: 'Steam beta branch'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - beta
+          - prerelease
 
 env:
   REGISTRY: ghcr.io
@@ -29,6 +38,7 @@ jobs:
           echo STEAM_USER=${{ secrets.STEAM_USER }} >> .env
           echo STEAM_PASS=${{ secrets.STEAM_PASS }} >> .env
           echo BETA_PASSWORD=${{ secrets.BETA_PASSWORD }} >> .env
+          echo STEAM_BETA=${{ github.event.inputs.steam-beta }} >> .env
 
       - name: Log in to the Container registry
         uses: docker/login-action@v3

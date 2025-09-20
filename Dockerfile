@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0
 RUN	set -x && \
 	apt-get -y update && \
 	apt-get -y upgrade && \
-	apt-get -y install curl lib32gcc-s1 libopus-dev libopus0 opus-tools libc-dev && \
+	apt-get -y install curl lib32gcc-s1 libopus-dev libopus0 opus-tools libc-dev libc6-dev && \
 	rm -rf /var/lib/{apt,dpkg,cache}
 
 # Copy the files from the builder
